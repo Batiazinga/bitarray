@@ -54,39 +54,7 @@ func TestIndexes(t *testing.T) {
 	}
 }
 
-// Benchmard Get:
-//
-// Loop throught the whole array to get values.
-func BenchmarkBitGetAll(b *testing.B) {
-	n := 500
-	m := 100
-	a := New2D(n, m)
-	b.ResetTimer()
-	for i := 0; i != b.N; i++ {
-		for j := 0; j != n; j++ {
-			for k := 0; k != m; k++ {
-				_ = a.Get(j, k)
-			}
-		}
-	}
-}
-
-func BenchmarkBoolGetAll(b *testing.B) {
-	n := 500
-	m := 100
-	a := make([]bool, m*n)
-	b.ResetTimer()
-	for i := 0; i != b.N; i++ {
-		for j := 0; j != n; j++ {
-			for k := 0; k != m; k++ {
-				_ = a[j*m+k]
-			}
-		}
-	}
-}
-
-// Get a single value
-func BenchmarkBitGetSingle(b *testing.B) {
+func BenchmarkBitGet(b *testing.B) {
 	n := 500
 	m := 100
 	j := 250
@@ -99,7 +67,7 @@ func BenchmarkBitGetSingle(b *testing.B) {
 	}
 }
 
-func BenchmarkBoolGetSingle(b *testing.B) {
+func BenchmarkBoolGet(b *testing.B) {
 	n := 500
 	m := 100
 	j := 250
@@ -111,39 +79,7 @@ func BenchmarkBoolGetSingle(b *testing.B) {
 	}
 }
 
-// Benchmard Set:
-//
-// Loop throught the whole array to set values.
-func BenchmarkBitSetAll(b *testing.B) {
-	n := 500
-	m := 100
-	a := New2D(n, m)
-	b.ResetTimer()
-	for i := 0; i != b.N; i++ {
-		for j := 0; j != n; j++ {
-			for k := 0; k != m; k++ {
-				a.Set(j, k, true)
-			}
-		}
-	}
-}
-
-func BenchmarkBoolSetAll(b *testing.B) {
-	n := 500
-	m := 100
-	a := make([]bool, m*n)
-	b.ResetTimer()
-	for i := 0; i != b.N; i++ {
-		for j := 0; j != n; j++ {
-			for k := 0; k != m; k++ {
-				a[j*m+k] = true
-			}
-		}
-	}
-}
-
-// Set a single value
-func BenchmarkBitSetSingle(b *testing.B) {
+func BenchmarkBitSet(b *testing.B) {
 	n := 500
 	m := 100
 	j := 250
@@ -155,7 +91,7 @@ func BenchmarkBitSetSingle(b *testing.B) {
 	}
 }
 
-func BenchmarkBoolSetSingle(b *testing.B) {
+func BenchmarkBoolSet(b *testing.B) {
 	n := 500
 	m := 100
 	j := 250
